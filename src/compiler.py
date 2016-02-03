@@ -28,4 +28,4 @@ class Compiler:
         self.assign[var] = number    
         self.s.push(number)
     def Print(self):
-        print self.s.peek()
+        print (self.s.peek())
