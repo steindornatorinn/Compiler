@@ -1,5 +1,4 @@
-from token import Token_codes
-from token import Token
+from token import * 
 from instream import Instream
 import sys
 class Lexer(object):
