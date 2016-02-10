@@ -1,7 +1,25 @@
 import sys
-import stack
+class Stack:
+     def __init__(self):
+         self.items = []
+
+     def isEmpty(self):
+         return self.items == []
+
+     def push(self, item):
+         self.items.append(item)
+
+     def pop(self):
+         return self.items.pop()
+
+     def peek(self):
+         return self.items[len(self.items)-1]
+
+     def size(self):
+         return len(self.items)
+
 class Interpreter:
-    s = stack.Stack()
+    s = Stack()
     assign = {}
     checkpush = False
     def Push(self, op):
@@ -81,6 +99,8 @@ class Interpreter:
             return True
         else:
             return False
+			
+		
 def main():
     lines = Interpreter().read_in()
 
