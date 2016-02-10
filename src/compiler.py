@@ -1,9 +1,11 @@
 import lexer
-#import parser
-class Compiler:
-def main():
-	Lexer myLexer = new Lexer();
-	#Parser myParser = new Parser(myLexer);
-	#myParser.parse();
-if __name__ == '__main__':
-    main()
+import parser
+class Compiler(object):
+    lexer = lexer.Lexer()
+    parser = parser.Parser(lexer)
+    def main(self):
+        self.parser.parse()
+
+if __name__ == "__main__":
+    compiler = Compiler() 
+    compiler.main()
