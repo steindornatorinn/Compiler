@@ -1,8 +1,8 @@
-import lexer
-import parser
+import Lexer
+import Parser
 class Compiler(object):
-    lexer = lexer.Lexer()
-    parser = parser.Parser(lexer)
+    lexer = Lexer.Lexer()
+    parser = Parser.Parser(lexer)
     def main(self):
         self.parser.parse()
 

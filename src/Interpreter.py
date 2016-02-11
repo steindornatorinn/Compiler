@@ -1,4 +1,5 @@
 import sys
+
 class Stack:
      def __init__(self):
          self.items = []
@@ -17,6 +18,7 @@ class Stack:
 
      def size(self):
          return len(self.items)
+		 
 
 class Interpreter:
     s = Stack()
@@ -70,37 +72,38 @@ class Interpreter:
             else:
                 print("Error for operator: ADD");
                 sys.exit(0)
-        if(word == "MULT"):
+        elif(word == "MULT"):
             if (self.checkStackForTwo()):
                 self.Mult()
             else:
                 print("Error for operator: MULT");
                 sys.exit(0)
-        if(word == "SUB"):
+        elif(word == "SUB"):
             if (self.checkStackForTwo()):
                 self.Sub()
             else:
                 print("Error for operator: SUB");
                 sys.exit(0)
-        if(word == "ASSIGN"):
+        elif(word == "ASSIGN"):
             if (self.checkStackForTwo()):
                 self.Assign()
             else:
                 print("Error for operator: ASSIGN");
                 sys.exit(0)
-        if(word == "PRINT"):
+        elif(word == "PRINT"):
             if (self.s.size() > 0) :
                 self.Print()
             else:
                 print("Error for operator: PRINT");
                 sys.exit(0)
+        else:
+            print("Error for operator: "+word);
+            sys.exit(0)
     def checkStackForTwo(self):
         if(self.s.size() > 1):
             return True
         else:
             return False
-			
-		
 def main():
     lines = Interpreter().read_in()
 

@@ -1,4 +1,4 @@
-from token import *
+from Token import *
 import sys
 class Parser(object):
     '''A parser for our programming language'''
@@ -70,6 +70,8 @@ class Parser(object):
         elif(self.accept(Token_codes.LPAREN)):
             self.expression()
             self.expect(Token_codes.RPAREN)
+        else:
+            self.error("Syntax error!")
 
     def error(self, message):
         '''Print a error message and exit'''
