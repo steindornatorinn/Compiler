@@ -22,39 +22,39 @@ class Stack:
 
 class Interpreter:
     s = Stack()
-    assign = {}
+    assignDict = {}
     checkpush = False
     # push function check if op exists in dictionary used for variable
-    def Push(self, op):
-        if op in self.assign:
-            op = self.assign[op]
+    def push(self, op):
+        if op in self.assignDict:
+            op = self.assignDict[op]
         self.s.push(op)
    
-    def Add(self):
+    def add(self):
         number = self.s.pop()
         number2 = self.s.pop()
         sums = number + number2
         self.s.push(sums)
     
-    def Sub(self):
+    def sub(self):
         number = self.s.pop()
         number2 = self.s.pop()
         sums = number2 - number
         self.s.push(sums)
     
-    def Mult(self):
+    def mult(self):
         number = self.s.pop()
         number2 = self.s.pop()
         sums = number * number2
         self.s.push(sums)
     
-    def Assign(self):
+    def assign(self):
         number = self.s.pop()
         var = self.s.pop()
-        self.assign[var] = number    
+        self.assignDict[var] = number    
         self.s.push(number)
     
-    def Print(self):
+    def print(self):
         print (self.s.peek())
     # stdin function that spilt on every word and check every word for keyword
     def read_in(self):
@@ -64,9 +64,9 @@ class Interpreter:
             for word in words:
                 if (self.checkpush):
                     if(word.isdigit()):
-                        self.Push(int(word))
+                        self.push(int(word))
                     else:
-                        self.Push(word)
+                        self.push(word)
                     self.checkpush = False
                 elif (word == "PUSH"):
                     self.checkpush = True
@@ -76,31 +76,31 @@ class Interpreter:
     def checkWordForOp(self,word):
         if(word == "ADD"):
             if (self.checkStackForTwo()):
-                self.Add()
+                self.add()
             else:
                 print("Error for operator: ADD");
                 sys.exit(0)
         elif(word == "MULT"):
             if (self.checkStackForTwo()):
-                self.Mult()
+                self.mult()
             else:
                 print("Error for operator: MULT");
                 sys.exit(0)
         elif(word == "SUB"):
             if (self.checkStackForTwo()):
-                self.Sub()
+                self.sub()
             else:
                 print("Error for operator: SUB");
                 sys.exit(0)
         elif(word == "ASSIGN"):
             if (self.checkStackForTwo()):
-                self.Assign()
+                self.assign()
             else:
                 print("Error for operator: ASSIGN");
                 sys.exit(0)
         elif(word == "PRINT"):
             if (self.s.size() > 0) :
-                self.Print()
+                self.print()
             else:
                 print("Error for operator: PRINT");
                 sys.exit(0)
